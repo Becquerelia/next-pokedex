@@ -1,6 +1,5 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 
 export default function Home({pokedex}) {
@@ -15,7 +14,7 @@ export default function Home({pokedex}) {
         {pokedex.map((eachPokemon, index) => {
           return (
             <li key={index}>
-              <Link href="" ><a>
+              <Link href={{ pathname: '/pokemon/[name]', query: {name: eachPokemon.name} }} ><a>
                 <div className={`${styles.pokemonCard} ${eachPokemon.types[0].type.name}`}>
                  <h3>{eachPokemon.name}</h3>
                  <Image src={eachPokemon.image} alt={eachPokemon.name} width="100" height="100" />
@@ -62,18 +61,3 @@ export async function getServerSideProps() {
     }
   }
 };
-
-// export async function getServerSideProps() {
-//   const getPokemon = () => {
-//     return fetch(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`)
-//     .then(response => response.json())
-//     .then(data => data)    
-//   }
-
-//   const pokedex = await getPokemon();
-//   return {
-//     props: {
-//       pokedex
-//     }
-//   }
-// };

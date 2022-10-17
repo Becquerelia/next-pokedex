@@ -28,14 +28,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 250px;
- 
+  height: 250px; 
 }
 
 .pokemonCard h3 {
   font-size: 1.2rem;
   margin-top: 0;
   margin-bottom: 1rem;
+  text-transform: capitalize;
 }
 
 .typesSection {
@@ -45,8 +45,10 @@
 }
 
 .type {
-  padding: 5px 5px;
-  margin: 20px 5px;
+  padding: 5px 8px;
+  margin: 20px 2px;
   border: 1px solid black;
   border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
+  text-transform: capitalize;
 }
