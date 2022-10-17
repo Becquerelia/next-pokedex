@@ -9,17 +9,19 @@ export default function Home({pokedex}) {
 
   
   return (
-    <>
-      <ul className={styles.grid} >
+    < div style={{margin: "50px"}} >
+    <h1 style={{display:"flex", flexDirection: "row", justifyContent: "center", margin: "50px"}} >Kanto - Pokédex</h1>
+      <ul className={styles.pokedexGrid} >
         {pokedex.map((eachPokemon, index) => {
           return (
-            <li style={{listStyle:"none"}} key={index}>
+            <li key={index}>
               <Link href="" ><a>
-                <div className={styles.card}>
+                <div className={styles.pokemonCard}>
                  <h3>{eachPokemon.name}</h3>
-                 <div className={styles.types} >
+                 <Image src={eachPokemon.image} alt={eachPokemon.name} width="100" height="100" />
+                 <div className={styles.typesSection} >
                   {eachPokemon.types.map((eachType, index)=>{
-                    return <p key={index} >{eachType.type.name}</p>
+                    return <p className={styles.type} key={index} >{eachType.type.name}</p>
                   })}
                  </div>
                 </div>
@@ -28,7 +30,7 @@ export default function Home({pokedex}) {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 }
 
