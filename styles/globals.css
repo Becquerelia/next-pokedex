@@ -15,12 +15,62 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.bug {
+  background: #aedf78;
+}
+
+.water {
+  background: #43ccff;
+}
+
+.grass {
+  background: #00ca91;
+}
+
+.fire {
+  background: #e95c4d;
+}
+
+.normal {
+  background: #c8c7c7;
+}
+
+.electric {
+  background: rgb(251, 238, 3);
+}
+
+.poison {
+  background: purple;
+}
+
+.ground {
+  background: rgb(126, 50, 31);
+}
+
+.fairy {
+  background: pink;
+}
+
+.fighting {
+  background: rgb(234, 120, 20);
+}
+
+.rock {
+  background: grey;
+}
+
+.ghost {
+  background: rgb(234, 131, 234);
+}
+
+.psychic {
+  background: rgb(76, 227, 204);
+}
+
+.ice {
+  background: rgb(100, 113, 233);
+}
+
+.dragon {
+  background: rgb(36, 55, 220);
 }

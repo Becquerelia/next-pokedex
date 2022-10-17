@@ -16,7 +16,7 @@ export default function Home({pokedex}) {
           return (
             <li key={index}>
               <Link href="" ><a>
-                <div className={styles.pokemonCard}>
+                <div className={`${styles.pokemonCard} ${eachPokemon.types[0].type.name}`}>
                  <h3>{eachPokemon.name}</h3>
                  <Image src={eachPokemon.image} alt={eachPokemon.name} width="100" height="100" />
                  <div className={styles.typesSection} >
