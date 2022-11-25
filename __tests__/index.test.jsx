@@ -1,20 +1,26 @@
-import { render, screen } from '@testing-library/react'
-import Home from '@/pages/index'
-import 'mutationobserver-shim';
+import { render, screen } from '@testing-library/react';
+import Home from '@/pages/index';
+import { PokedexMock } from '../__mocks__/PokedexMock';
 
 
 describe('Home', () => {
-  it('renders', () => {
-    const pokedex = [{
-      id: 1,
-      name: 'squirtle',
-      types: [{type: {name: 'water'}}],
-      image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/7.svg'
-    }]
-    render(<Home pokedex={pokedex} />)
 
-    const heading = screen.getByText(/kanto/i)
+  beforeEach(() => {
+    render(<Home pokedex={PokedexMock} />);
+  });
 
-    expect(heading).toBeInTheDocument()
-  })
-})
+  it('Home component its rendering correctly', () => {    
+    const heading = screen.getByText(/kanto/i);
+    expect(heading).toBeInTheDocument();
+  });
+
+  it('Should exist pokemon name in the card', () => {
+    expect(screen.getByText(/squirtle/i)).toBeInTheDocument();
+  });
+
+  it('Should display pokemon image in the card', () => {
+   const pokeImage = screen.getByRole('img');
+   expect(pokeImage.alt).toContain('squirtle');
+  });
+
+});
