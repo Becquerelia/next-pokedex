@@ -9,18 +9,33 @@ describe('Home', () => {
     render(<Home pokedex={PokedexMock} />);
   });
 
-  it('Home component its rendering correctly', () => {    
+  it('Home component should render correctly', () => {    
     const heading = screen.getByText(/kanto/i);
     expect(heading).toBeInTheDocument();
   });
 
   it('Should exist pokemon name in the card', () => {
-    expect(screen.getByText(/squirtle/i)).toBeInTheDocument();
-  });
+    PokedexMock.forEach((eachPokemon) => {
+      expect(screen.getByText(eachPokemon.name)).toBeInTheDocument();
+    })    
+  });  
 
   it('Should display pokemon image in the card', () => {
-   const pokeImage = screen.getByRole('img');
-   expect(pokeImage.alt).toContain('squirtle');
+    const pokeImage = screen.getByRole('img');
+    PokedexMock.forEach((eachPokemon) => {
+      expect(pokeImage.getAttribute('alt')).toBe(eachPokemon.name);
+    })       
   });
+
+  it('Should display pokemon type in the card', () => {
+    PokedexMock.forEach((eachPokemon) => {
+      expect(eachPokemon).toHaveProperty('types');
+      expect(screen.getByText(eachPokemon.types[0].type.name)).toBeInTheDocument();
+    })
+  });
+
+  // it('Should redirect to pokemon details by clicking on it', () => {
+  //   expect(screen.getByTestId('type-test')).toContain('water');
+  // });
 
 });
