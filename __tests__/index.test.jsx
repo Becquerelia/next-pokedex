@@ -30,12 +30,16 @@ describe('Home', () => {
   it('Should display pokemon type in the card', () => {
     PokedexMock.forEach((eachPokemon) => {
       expect(eachPokemon).toHaveProperty('types');
+      expect(eachPokemon.types).toHaveLength(1);
       expect(screen.getByText(eachPokemon.types[0].type.name)).toBeInTheDocument();
     })
   });
 
-  // it('Should redirect to pokemon details by clicking on it', () => {
-  //   expect(screen.getByTestId('type-test')).toContain('water');
-  // });
+  it('Should redirect to pokemon details by clicking on it', () => {
+    const pokeCard = screen.getByTestId('poke-test-link');
+    PokedexMock.forEach((eachPokemon) => {
+      
+    })
+  });
 
 });
