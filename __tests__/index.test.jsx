@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 import Home from '@/pages/index';
 import { PokedexMock } from '../__mocks__/PokedexMock';
 
@@ -37,9 +38,15 @@ describe('Home', () => {
 
   it('Should redirect to pokemon details by clicking on it', () => {
     const pokeCard = screen.getByTestId('poke-test-link');
-    PokedexMock.forEach((eachPokemon) => {
-      
+    expect(global.window.location.pathname).toContain(`/`) 
+    PokedexMock.forEach(async (eachPokemon) => {
+      userEvent.click(pokeCard);
+      await waitFor(() => {
+        expect(global.window.location.pathname).toContain(`/pokemon/${eachPokemon.name}`) 
+        const heading = screen.getByText(/details/i);
+        expect(heading).toBeInTheDocument();
+      })         
     })
-  });
+  });  
 
 });
