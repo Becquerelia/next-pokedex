@@ -3,7 +3,7 @@ import Image from 'next/image';
 function Pokemon({pokemonDetails}) {
   return (
     <div>
-        <h1>{pokemonDetails.name}</h1>
+        <h1>Details about: {pokemonDetails.name}</h1>
         <Image src={pokemonDetails.sprites.other.dream_world.front_default} alt={pokemonDetails.name} width="300" height="300" />
     </div>
   )
